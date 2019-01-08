@@ -56,7 +56,7 @@ main {
 
       figcaption { 
         @include make-overlay(absolute, 100%, 20px, 200px, 0); 
-        margin: 2% auto;
+        margin: 1% auto;
 
         ul { padding: 0; }
       }
@@ -65,7 +65,7 @@ main {
     p {
       max-width: 900px;
       margin: 0 auto;
-      padding: 3%; 
+      padding: 5%; 
     }
   }
 }
