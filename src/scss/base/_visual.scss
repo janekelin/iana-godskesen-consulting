@@ -23,6 +23,7 @@ i[class^="fab"] { color: $color-icons; }
   img {
     border: 2px solid $color-icons;
     border-radius: 10px;
+    object-fit: cover;
   }
 }
 

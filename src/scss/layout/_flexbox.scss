@@ -7,14 +7,17 @@
 
 header,
 #contact,
-#projects,
-.card { 
+#projects { 
   display: flex; 
   justify-content: space-evenly; 
 }
 
+#projects { 
+  justify-content: space-between; 
+}
+
 header,
-.card { flex-direction: column; }
+#projects { flex-direction: column; }
 
 .tags { 
   display: flex;
