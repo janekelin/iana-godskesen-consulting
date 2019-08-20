@@ -25,7 +25,7 @@
     concat         = require('gulp-concat'),
     deporder       = require('gulp-deporder'),
     stripdebug     = require('gulp-strip-debug'),
-    uglify         = require('gulp-uglify'),
+    terser         = require('gulp-terser'),
     sourcemaps     = devBuild ? require('gulp-sourcemaps') : null,
     browsersync    = devBuild ? require('browser-sync').create() : null;
 
@@ -114,7 +114,7 @@
       .pipe(deporder())
       .pipe(concat(jsbuild.file))
       .pipe(devBuild ? noop() : stripdebug())
-      .pipe(devBuild ? noop() : uglify())
+      .pipe(devBuild ? noop() : terser())
       .pipe(gulp.dest(jsbuild.build))
     done();
   });
