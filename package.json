@@ -4,7 +4,9 @@
   "description": "Personal site of Iana Godskesen Kalinichenko",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development gulp",
+    "prod": "NODE_ENV=production gulp"
   },
   "keywords": [
     "portfolio"
@@ -30,7 +32,7 @@
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-debug": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
+    "gulp-terser": "^1.2.0",
     "postcss-assets": "^5.0.0",
     "usedcss": "^1.0.7"
   }
