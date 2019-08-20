@@ -1,3 +1,5 @@
+'use strict';
+
 window.addEventListener("load", function(){
 	var nodes = document.querySelectorAll("#mainNav a");
 	for(var i=0; i<nodes.length; i++){
