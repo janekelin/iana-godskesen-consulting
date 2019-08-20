@@ -30,7 +30,7 @@ class ProjectSection extends Component {
     return createElement(
       'section',
       {id: 'projects'},
-      'Section loaded'
+      'Section loaded.'
     );
   }
 }

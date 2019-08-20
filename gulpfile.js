@@ -103,7 +103,7 @@
 
  /*** JavaScript task ***/
   const jsbuild = {
-    src             : dir.src + 'js/**/*',
+    src             : dir.src + 'js/after-babel/*',
     build           : dir.build + 'js/',
     file            : 'main.min.js'
   };

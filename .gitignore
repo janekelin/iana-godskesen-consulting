@@ -10,3 +10,4 @@ Thumbs.db
 build/
 logs/
 node_modules/
+src/js/after-babel
