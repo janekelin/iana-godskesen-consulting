@@ -82,7 +82,6 @@
   // remove unused selectors and minify production CSS
   if (!devBuild) {
     cssConfig.postCSS.push(
-      require('usedcss')({ html: ['index.html', '404.html']}),
       require('cssnano')
     );
   }
