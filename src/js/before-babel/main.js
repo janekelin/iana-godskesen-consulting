@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function updatePortrait() {
-  const navigation = document.getElementById("mainNav");
+  const header = document.getElementById("header");
   const portrait = document.getElementById("portrait");
 
-  navigation.addEventListener("click", function(event) {
+  header.addEventListener("click", function(event) {
     const NEW_SRC_ATTRIBUTE = "data-img";
 
     const imgNumber = [...event.target.attributes].find(
