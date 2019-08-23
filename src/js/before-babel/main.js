@@ -30,7 +30,7 @@ function updatePortrait() {
 
   const projects = [
     {
-      id: 100,
+      id: "100",
       title: "Kurt Cobain's Tribute Page",
       url: "https://codepen.io/collection/XPjeBj/",
       imageUrl: "build/images/screenshot.png",
@@ -41,7 +41,7 @@ function updatePortrait() {
         "A pure CSS experiment on CSS Grid and variable fonts. Submitted for freeCodeCamp certifications with focus on Responsive Web Design."
     },
     {
-      id: 101,
+      id: "101",
       title: "sparinspiration.com",
       url: "http://sparinspiration.com",
       imageUrl: "build/images/screenshot2.png",
