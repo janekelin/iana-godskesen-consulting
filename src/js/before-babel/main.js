@@ -14,10 +14,9 @@ function updatePortrait() {
 
     const dataImgAttr = [...event.target.attributes].find(
       attribute => attribute.name === NEW_SRC_ATTRIBUTE
-    );
+    ); //undefined if no data-img attribute present
     const imgNumber = dataImgAttr && dataImgAttr.value || '';
     
-
     if (imgNumber) {
       const newSrc = `build/images/b_image${imgNumber}.png`;
       portrait.setAttribute("src", newSrc);
