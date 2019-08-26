@@ -12,12 +12,14 @@ function updatePortrait() {
   header.addEventListener("click", function(event) {
     const NEW_SRC_ATTRIBUTE = "data-img";
 
-    const imgNumber = [...event.target.attributes].find(
+    const dataImgAttr = [...event.target.attributes].find(
       attribute => attribute.name === NEW_SRC_ATTRIBUTE
-    ).value;
-    const newSrc = `build/images/b_image${imgNumber}.png`;
+    )
+    const imgNumber = dataImgAttr && dataImgAttr.value || '';
+    
 
-    if (newSrc) {
+    if (imgNumber) {
+      const newSrc = `build/images/b_image${imgNumber}.png`;
       portrait.setAttribute("src", newSrc);
     }
   });
