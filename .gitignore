@@ -1,6 +1,7 @@
 npm-debug.log
 package-lock.json
 Thumbs.db
+index-dev.html
 
 *.log
 .DS_Store
