@@ -127,7 +127,7 @@ function updatePortrait() {
   }
 
   function TagList(props) {
-    const tags = props.value.map(tag => <li key={Date.now()}>{tag}</li>);
+    const tags = props.value.map(tag => <li key={createKeyFromString(tag)}>{tag}</li>);
 
     return <ul className="tags">{tags}</ul>;
   }
@@ -140,4 +140,17 @@ function updatePortrait() {
     <ProjectSection projects={projects} />,
     projectSectionContainer
   );
+
+  // Helper functions
+  function createKeyFromString(key){
+    const result = key && removeWhitespace(key).toLowerCase();
+    return result ? result : Date.now().toString();
+  }
+
+  function removeWhitespace(phrase){
+    const result = phrase && phrase.toString() //typechecking
+                          .split(' ') //'word1 word2' => ["word1", "word2"]
+                          .join('') //["word1", "word2"] => 'word1word2'
+    return result;
+  }
 }
