@@ -121,7 +121,7 @@
 /*** browser-sync task ***/
 const syncConfig = {
   server: {
-    baseDir          : 'public/',
+    baseDir          : './',
     index            : 'index.html'
   },
   port               : 8000,
