@@ -14,7 +14,7 @@ function updatePortrait() {
 
     const dataImgAttr = [...event.target.attributes].find(
       attribute => attribute.name === NEW_SRC_ATTRIBUTE
-    )
+    );
     const imgNumber = dataImgAttr && dataImgAttr.value || '';
     
 
