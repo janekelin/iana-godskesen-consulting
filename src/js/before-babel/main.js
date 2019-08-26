@@ -53,8 +53,8 @@ function updatePortrait() {
 
   // Components
   function ProjectSection(props) {
-    const projectsList = props.projects.map(item => (
-      <ProjectCard key={item.id} value={item} />
+    const projectsList = props.projects.map(project => (
+      <ProjectCard key={project.id} value={project} />
     ));
 
     return (
@@ -69,13 +69,13 @@ function updatePortrait() {
 
     const projectHeader = {
       title: project.title,
-      url: project.url
+      url: project.url,
     };
     const projectImage = {
-      alt: project.imageAlt,
+      imageAlt: project.imageAlt,
       imageUrl: project.imageUrl,
       projectUrl: project.url,
-      tags: project.tags
+      tags: project.tags,
     };
 
     return (
@@ -113,7 +113,7 @@ function updatePortrait() {
 
     return (
       <a href={image.projectUrl}>
-        <img src={image.imageUrl} alt={image.imageALt} />
+        <img src={image.imageUrl} alt={image.imageAlt} />
       </a>
     );
   }
