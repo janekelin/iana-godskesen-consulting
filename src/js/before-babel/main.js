@@ -99,12 +99,12 @@ function updatePortrait() {
   }
 
   function ProjectImage(props) {
-    const projectImage = props.value;
+    const {tags: projectTags, ...projectImage} = props.value;
 
     return (
       <figure className="screenshot">
         <ImageClickable value={projectImage} />
-        <Caption tags={projectImage.tags} />
+        <Caption tags={projectTags} />
       </figure>
     );
   }
