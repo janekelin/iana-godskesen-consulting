@@ -14,6 +14,18 @@
   ],
   "author": "Iana Godskesen Kalinichenko",
   "license": "ISC",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",

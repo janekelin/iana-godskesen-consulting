@@ -72,9 +72,7 @@
         loadPaths: ['images/'],
         basePath: dir.build
       }),
-      require('autoprefixer')({
-        browsers: ['> 1%']
-      })
+      require('autoprefixer')()
     ]
 
   };
