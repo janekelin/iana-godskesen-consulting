@@ -92,9 +92,9 @@ function updatePortrait() {
     const project = props.value;
 
     return (
-      <h2>
+      <h3>
         <a href={project.url}>{project.title}</a>
-      </h2>
+      </h3>
     );
   }
 
