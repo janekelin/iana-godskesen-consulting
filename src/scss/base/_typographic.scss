@@ -32,12 +32,13 @@ main {
     @media screen and (min-width: $very-large-screen) { font-size: 1em; }
   }
 
-  h2 { 
+  h2,
+  h3 { 
     font-size: 2em;
     font-weight: 200; 
   }
 
-  .card h2 { font-size: 1.7em; }
+  .card h3 { font-size: 1.7em; }
 
   .tags { font-size: 0.75em; }
 }
