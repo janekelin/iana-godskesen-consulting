@@ -111,10 +111,6 @@ AddDefaultCharset utf-8
                      .xloc
 </IfModule>
 
-<IfModule mod_headers.c>
-     Header set Content-Security-Policy "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
-</IfModule>
-
 <IfModule mod_autoindex.c>
     Options -Indexes
 </IfModule>
@@ -224,7 +220,7 @@ ServerSignature Off
 
   # CSS
 
-    ExpiresByType text/css                              "access plus 0 seconds"
+    ExpiresByType text/css                              "access plus 1 hour"
 
 
   # Data interchange
@@ -254,7 +250,7 @@ ServerSignature Off
 
   # JavaScript
 
-    ExpiresByType application/javascript                "access plus 0 seconds"
+    ExpiresByType application/javascript                "access plus 1 hour"
     ExpiresByType application/x-javascript              "access plus 1 year"
     ExpiresByType text/javascript                       "access plus 1 year"
 
