@@ -1,7 +1,7 @@
 RewriteEngine On 
 RewriteCond %{HTTPS}  !=on 
 RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
-Redirect https://iana.godskesen.consulting /index.html
+
 ErrorDocument 400 /error.html
 ErrorDocument 401 /error.html
 ErrorDocument 403 /error.html
