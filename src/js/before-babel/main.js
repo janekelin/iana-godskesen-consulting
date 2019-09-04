@@ -60,7 +60,7 @@ function updatePortrait() {
 
     return (
       <section id="projects">
-        <h2 class="visuallyhidden">My projects and collaborations</h2>
+        <h2 class="sr-only">My projects and collaborations</h2>
         {projectsList.length ? projectsList : PLACEHOLDER}
       </section>
     );
