@@ -120,7 +120,7 @@
 const syncConfig = {
   server: {
     baseDir          : './',
-    index            : 'index-dev.html'
+    index            : 'index.html'
   },
   port               : 8000,
   files              : dir.build + '**/*',
