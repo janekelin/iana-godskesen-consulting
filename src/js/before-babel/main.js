@@ -53,29 +53,47 @@ function updatePortrait() {
   ];
 
   // Components
-  function ProjectSection(props) {
-    const {projects} = props;
+  class ProjectSection extends React.Component {
+    constructor(props){
+      super(props);
+      this.state = {
+        activeTags: new Set(props.projects.flatMap(project => project.tags)),
+      }
+      this.handleClick = this.handleClick.bind(this);
+    }
 
-    const projectsList = projects.map(project => (
-      <ProjectCard key={project.id} value={project} />
-    ));
-    const uniqueTags = new Set(projects.flatMap(project => project.tags)); 
-    const tagList = Array.from(uniqueTags); //type conversion before passing to the component
+    handleClick(e){
+      const clickedTag = e.target.innerText;
+      const { activeTags } = this.state;
+      const updatedTags = toggleValueInSet(activeTags, clickedTag);
+      this.setState({activeTags: updatedTags});
+    }
 
-    return (
-      <section id="projects">
-        <h2>My projects and collaborations</h2>
-        <TagList value={tagList} />
-        {projectsList.length ? projectsList : PLACEHOLDER}
-      </section>
-    );
+    render(){
+      const {projects} = this.props;
+
+      const projectsList = projects.map(project => (
+        <ProjectCard key={project.id} value={project} />
+      ));
+       
+      const tagList = projects.flatMap(project => project.tags); 
+  
+      return (
+        <section id="projects">
+          <h2>My projects and collaborations</h2>
+          <TagList allTags={tagList} activeTags={this.state.activeTags} handleClick={this.handleClick}/>
+          {projectsList.length ? projectsList : PLACEHOLDER}
+        </section>
+      );
+    }
+    
   }
 
   function ProjectCard(props) {
     const project = props.value;
 
     return (
-      <a className="card" style={{"background": `url(${project.imageUrl})`}} >
+      <a href={project.url} target="_blank" className="card" style={{"background": `url(${project.imageUrl})`}} >
         <h3 className="project-title">{project.title}</h3>
         <p className="project-description">{project.description ? project.description : PLACEHOLDER}</p>
       </a>
@@ -83,7 +101,9 @@ function updatePortrait() {
   }
 
   function TagList(props) {
-    const tags = props.value.map(tag => <li key={createKey(tag)}>{tag}</li>);
+    const { activeTags, allTags, handleClick } = props;
+    const uniqueTags = Array.from(new Set(allTags));
+    const tags = uniqueTags.map(tag => <li key={createKey(tag)} onClick={handleClick} className={activeTags.has(tag) ? "active" : "passive"} >{tag}</li>);
 
     return <ul className="tags">{tags}</ul>;
   }
@@ -108,5 +128,11 @@ function updatePortrait() {
                           .split(' ') //'word1 word2' => ["word1", "word2"]
                           .join('') //["word1", "word2"] => 'word1word2'
     return result;
+  }
+
+  function toggleValueInSet(aSet, aValue){
+    const copySet = new Set(aSet);
+    copySet.has(aValue) ? copySet.delete(aValue) : copySet.add(aValue);
+    return copySet;
   }
 }
