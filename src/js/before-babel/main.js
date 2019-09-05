@@ -69,10 +69,15 @@ function updatePortrait() {
       this.setState({activeTags: updatedTags});
     }
 
+
     render(){
       const {projects} = this.props;
 
-      const projectsList = projects.map(project => (
+      const filtered = projects.filter(project => project.tags.some(el => this.state.activeTags.has(el)));
+      console.log(this.state.activeTags)
+      console.log(filtered)
+      
+      const projectsList = filtered.map(project => (
         <ProjectCard key={project.id} value={project} />
       ));
        
