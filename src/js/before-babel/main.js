@@ -56,28 +56,42 @@ function updatePortrait() {
   class ProjectSection extends React.Component {
     constructor(props){
       super(props);
-      this.state = {
+      this.defaultState = {
         activeTags: new Set(props.projects.flatMap(project => project.tags)),
-      }
+        firstClick: true,
+      };
+
+      this.state = this.defaultState;
+
+      
       this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e){
+      if(e.target.className === "clear"){
+        e.preventDefault();
+        this.setState({activeTags: new Set()});
+        return;
+      }
+
+      if(e.target.className === "choose"){
+        e.preventDefault();
+        this.setState(this.defaultState);
+        return;
+      }
+
       const clickedTag = e.target.innerText;
+      
       const { activeTags } = this.state;
-      const updatedTags = toggleValueInSet(activeTags, clickedTag);
-      this.setState({activeTags: updatedTags});
+      const updatedTags = this.state.firstClick ? new Set([clickedTag]) : toggleValueInSet(activeTags, clickedTag);
+      this.setState({activeTags: updatedTags, firstClick: false});
     }
 
 
     render(){
       const {projects} = this.props;
 
-      const filtered = projects.filter(project => project.tags.some(el => this.state.activeTags.has(el)));
-      console.log(this.state.activeTags)
-      console.log(filtered)
-      
-      const projectsList = filtered.map(project => (
+      const projectsList = projects.filter(project => project.tags.some(el => this.state.activeTags.has(el))).map(project => (
         <ProjectCard key={project.id} value={project} />
       ));
        
@@ -110,7 +124,13 @@ function updatePortrait() {
     const uniqueTags = Array.from(new Set(allTags));
     const tags = uniqueTags.map(tag => <li key={createKey(tag)} onClick={handleClick} className={activeTags.has(tag) ? "active" : "passive"} >{tag}</li>);
 
-    return <ul className="tags">{tags}</ul>;
+    return (
+      <div className="container">
+        <ul className="tags">{tags}</ul>
+        <button className="clear" onClick={handleClick}>Clear all</button>
+        <button className="choose" onClick={handleClick}>Choose all</button>
+      </div>
+    ) ;
   }
 
   // Rendering
