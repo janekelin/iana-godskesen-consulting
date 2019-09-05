@@ -54,13 +54,18 @@ function updatePortrait() {
 
   // Components
   function ProjectSection(props) {
-    const projectsList = props.projects.map(project => (
+    const {projects} = props;
+
+    const projectsList = projects.map(project => (
       <ProjectCard key={project.id} value={project} />
     ));
+    const uniqueTags = new Set(projects.flatMap(project => project.tags)); 
+    const tagList = Array.from(uniqueTags); //type conversion before passing to the component
 
     return (
       <section id="projects">
-        <h2 class="sr-only">My projects and collaborations</h2>
+        <h2>My projects and collaborations</h2>
+        <TagList value={tagList} />
         {projectsList.length ? projectsList : PLACEHOLDER}
       </section>
     );
@@ -69,62 +74,11 @@ function updatePortrait() {
   function ProjectCard(props) {
     const project = props.value;
 
-    const projectHeader = {
-      title: project.title,
-      url: project.url,
-    };
-    const projectImage = {
-      imageAlt: project.imageAlt,
-      imageUrl: project.imageUrl,
-      projectUrl: project.url,
-      tags: project.tags,
-    };
-
     return (
-      <div className="card">
-        <ProjectHeader value={projectHeader} />
-        <ProjectImage value={projectImage} />
-        <p>{project.description ? project.description : PLACEHOLDER}</p>
-      </div>
-    );
-  }
-
-  function ProjectHeader(props) {
-    const project = props.value;
-
-    return (
-      <h3>
-        <a href={project.url}>{project.title}</a>
-      </h3>
-    );
-  }
-
-  function ProjectImage(props) {
-    const {tags: projectTags, ...projectImage} = props.value;
-
-    return (
-      <figure className="screenshot">
-        <ImageClickable value={projectImage} />
-        <Caption tags={projectTags} />
-      </figure>
-    );
-  }
-
-  function ImageClickable(props) {
-    const image = props.value;
-
-    return (
-      <a href={image.projectUrl}>
-        <img src={image.imageUrl} alt={image.imageAlt} />
+      <a className="card" style={{"background": `url(${project.imageUrl})`}} >
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-description">{project.description ? project.description : PLACEHOLDER}</p>
       </a>
-    );
-  }
-
-  function Caption(props) {
-    return (
-      <figcaption>
-        <TagList value={props.tags} />
-      </figcaption>
     );
   }
 
