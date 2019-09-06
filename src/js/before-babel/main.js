@@ -27,7 +27,7 @@ function updatePortrait() {
 //React Injection
 {
   // Script-wide constants
-  const PLACEHOLDER = "Loading...";
+  const PLACEHOLDER = "No projects are chosen...";
 
   const projects = [
     {
@@ -56,35 +56,38 @@ function updatePortrait() {
   class ProjectSection extends React.Component {
     constructor(props){
       super(props);
+
       this.defaultState = {
         activeTags: new Set(props.projects.flatMap(project => project.tags)),
+        showClear: true,
+        showChoose: false,
         firstClick: true,
       };
 
       this.state = this.defaultState;
-
-      
       this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e){
+      e.preventDefault();
+
       if(e.target.className === "clear"){
-        e.preventDefault();
-        this.setState({activeTags: new Set()});
+        this.setState({activeTags: new Set(), showClear: false, showChoose: true});
         return;
       }
 
       if(e.target.className === "choose"){
-        e.preventDefault();
         this.setState(this.defaultState);
         return;
       }
 
-      const clickedTag = e.target.innerText;
-      
-      const { activeTags } = this.state;
-      const updatedTags = this.state.firstClick ? new Set([clickedTag]) : toggleValueInSet(activeTags, clickedTag);
-      this.setState({activeTags: updatedTags, firstClick: false});
+      const clickedTag = e.target.innerText;     
+      const { activeTags, firstClick } = this.state;
+
+      const updatedTags = firstClick ? new Set([clickedTag]) : toggleValueInSet(activeTags, clickedTag);
+      const updatedShowChoose = this.defaultState.activeTags.size !== updatedTags.size;
+      const updatedShowClear = updatedTags.size > 0;
+      this.setState({activeTags: updatedTags, firstClick: false, showClear: updatedShowClear, showChoose: updatedShowChoose});
     }
 
 
