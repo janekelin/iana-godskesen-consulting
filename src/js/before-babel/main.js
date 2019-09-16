@@ -27,7 +27,7 @@ function updatePortrait() {
 //React Injection
 {
   // Script-wide constants
-  const PLACEHOLDER = "Loading...";
+  const PLACEHOLDER = "No projects are chosen. Click on tags above to choose some projects.";
 
   const projects = [
     {
@@ -53,85 +53,87 @@ function updatePortrait() {
   ];
 
   // Components
-  function ProjectSection(props) {
-    const projectsList = props.projects.map(project => (
-      <ProjectCard key={project.id} value={project} />
-    ));
+  class ProjectSection extends React.Component {
+    constructor(props){
+      super(props);
 
-    return (
-      <section id="projects">
-        <h2 class="visuallyhidden">My projects and collaborations</h2>
-        {projectsList.length ? projectsList : PLACEHOLDER}
-      </section>
-    );
+      this.defaultState = {
+        activeTags: new Set(props.projects.flatMap(project => project.tags)),
+        showClear: true, //flag for "Clear All"-button
+        showChoose: false, //flag for "Choose All"-button
+        firstClick: true, //all tags are shown from the beggining, so on first click non-chosen tags should become passive
+      };
+
+      this.state = this.defaultState;
+      this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e){
+      e.preventDefault();
+
+      if(e.target.className === "clear"){
+        this.setState({activeTags: new Set(), showClear: false, showChoose: true});
+        return;
+      }
+
+      if(e.target.className === "choose"){
+        this.setState(this.defaultState);
+        return;
+      }
+
+      const clickedTag = e.target.innerText;     
+      const { activeTags, firstClick } = this.state;
+
+      const updatedTags = firstClick ? new Set([clickedTag]) : toggleValueInSet(activeTags, clickedTag);
+      const updatedShowChoose = this.defaultState.activeTags.size !== updatedTags.size;
+      const updatedShowClear = updatedTags.size > 0;
+      this.setState({activeTags: updatedTags, firstClick: false, showClear: updatedShowClear, showChoose: updatedShowChoose});
+    }
+
+
+    render(){
+      const {projects} = this.props;
+
+      const projectsList = projects.filter(project => project.tags.some(tag => this.state.activeTags.has(tag))).map(project => (
+        <ProjectCard key={project.id} value={project} />
+      ));
+       
+      const tagList = projects.flatMap(project => project.tags); //only unique tags
+  
+      return (
+        <section id="projects">
+          <h2>My projects and collaborations</h2>
+          <TagList allTags={tagList} activeTags={this.state.activeTags} handleClick={this.handleClick}/>
+          {projectsList.length ? projectsList : PLACEHOLDER}
+        </section>
+      );
+    }
+    
   }
 
   function ProjectCard(props) {
     const project = props.value;
 
-    const projectHeader = {
-      title: project.title,
-      url: project.url,
-    };
-    const projectImage = {
-      imageAlt: project.imageAlt,
-      imageUrl: project.imageUrl,
-      projectUrl: project.url,
-      tags: project.tags,
-    };
-
     return (
-      <div className="card">
-        <ProjectHeader value={projectHeader} />
-        <ProjectImage value={projectImage} />
-        <p>{project.description ? project.description : PLACEHOLDER}</p>
-      </div>
-    );
-  }
-
-  function ProjectHeader(props) {
-    const project = props.value;
-
-    return (
-      <h3>
-        <a href={project.url}>{project.title}</a>
-      </h3>
-    );
-  }
-
-  function ProjectImage(props) {
-    const {tags: projectTags, ...projectImage} = props.value;
-
-    return (
-      <figure className="screenshot">
-        <ImageClickable value={projectImage} />
-        <Caption tags={projectTags} />
-      </figure>
-    );
-  }
-
-  function ImageClickable(props) {
-    const image = props.value;
-
-    return (
-      <a href={image.projectUrl}>
-        <img src={image.imageUrl} alt={image.imageAlt} />
+      <a href={project.url} target="_blank" className="card" style={{"background": `url(${project.imageUrl})`}} >
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-description">{project.description ? project.description : PLACEHOLDER}</p>
       </a>
     );
   }
 
-  function Caption(props) {
-    return (
-      <figcaption>
-        <TagList value={props.tags} />
-      </figcaption>
-    );
-  }
-
   function TagList(props) {
-    const tags = props.value.map(tag => <li key={createKey(tag)}>{tag}</li>);
+    const { activeTags, allTags, handleClick } = props;
+    const uniqueTags = Array.from(new Set(allTags));
+    const tags = uniqueTags.map(tag => <li key={createKey(tag)} onClick={handleClick} className={activeTags.has(tag) ? "active" : "passive"} >{tag}</li>);
 
-    return <ul className="tags">{tags}</ul>;
+    return (
+      <div className="container">
+        <ul className="tags">{tags}</ul>
+        <button className="clear" onClick={handleClick}>Clear all</button>
+        <button className="choose" onClick={handleClick}>Choose all</button>
+      </div>
+    ) ;
   }
 
   // Rendering
@@ -154,5 +156,11 @@ function updatePortrait() {
                           .split(' ') //'word1 word2' => ["word1", "word2"]
                           .join('') //["word1", "word2"] => 'word1word2'
     return result;
+  }
+
+  function toggleValueInSet(aSet, aValue){
+    const copySet = new Set(aSet);
+    copySet.has(aValue) ? copySet.delete(aValue) : copySet.add(aValue);
+    return copySet;
   }
 }
