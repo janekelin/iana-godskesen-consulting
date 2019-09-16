@@ -27,7 +27,7 @@ function updatePortrait() {
 //React Injection
 {
   // Script-wide constants
-  const PLACEHOLDER = "No projects are chosen...";
+  const PLACEHOLDER = "No projects are chosen. Click on tags above to choose some projects.";
 
   const projects = [
     {
@@ -59,9 +59,9 @@ function updatePortrait() {
 
       this.defaultState = {
         activeTags: new Set(props.projects.flatMap(project => project.tags)),
-        showClear: true,
-        showChoose: false,
-        firstClick: true,
+        showClear: true, //flag for "Clear All"-button
+        showChoose: false, //flag for "Choose All"-button
+        firstClick: true, //all tags are shown from the beggining, so on first click non-chosen tags should become passive
       };
 
       this.state = this.defaultState;
@@ -94,11 +94,11 @@ function updatePortrait() {
     render(){
       const {projects} = this.props;
 
-      const projectsList = projects.filter(project => project.tags.some(el => this.state.activeTags.has(el))).map(project => (
+      const projectsList = projects.filter(project => project.tags.some(tag => this.state.activeTags.has(tag))).map(project => (
         <ProjectCard key={project.id} value={project} />
       ));
        
-      const tagList = projects.flatMap(project => project.tags); 
+      const tagList = projects.flatMap(project => project.tags); //only unique tags
   
       return (
         <section id="projects">
