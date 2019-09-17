@@ -28,6 +28,10 @@ function updatePortrait() {
 {
   // Script-wide constants
   const PLACEHOLDER = "No projects are chosen. Click on tags above to choose some projects.";
+  const PROJECTS = " projects with the following tag: ";
+  const HIDE = `Hide ${PROJECTS}`;
+  const SHOW = `Show ${PROJECTS}`;
+  
 
   const projects = [
     {
@@ -81,7 +85,7 @@ function updatePortrait() {
         return;
       }
 
-      const clickedTag = e.target.innerText;     
+      const clickedTag = e.target.lastChild.nodeValue; //every tag consists of a sr-only span and a text node   
       const { activeTags, firstClick } = this.state;
 
       const updatedTags = firstClick ? new Set([clickedTag]) : toggleValueInSet(activeTags, clickedTag);
@@ -117,21 +121,28 @@ function updatePortrait() {
     return (
       <a href={project.url} target="_blank" className="card" style={{"background": `url(${project.imageUrl})`}} >
         <h3 className="project-title">{project.title}</h3>
-        <p className="project-description">{project.description ? project.description : PLACEHOLDER}</p>
+        <p className="project-description">{project.description ? project.description : ""}</p>
       </a>
     );
   }
 
   function TagList(props) {
-    const { activeTags, allTags, handleClick } = props;
+    const { activeTags, allTags, handleClick } = props; 
     const uniqueTags = Array.from(new Set(allTags));
-    const tags = uniqueTags.map(tag => <li key={createKey(tag)} onClick={handleClick} className={activeTags.has(tag) ? "active" : "passive"} >{tag}</li>);
+    const tags = uniqueTags.map(tag => (
+      <li key={createKey(tag)}> 
+        <button className={activeTags.has(tag) ? "active" : "passive"} onClick={handleClick}>
+          {activeTags.has(tag) ? createSRonlyText(HIDE) : createSRonlyText(SHOW)}
+          {tag}
+        </button>
+      </li>
+    ));
 
     return (
       <div className="container">
         <ul className="tags">{tags}</ul>
-        <button className="clear" onClick={handleClick}>Clear all</button>
-        <button className="choose" onClick={handleClick}>Choose all</button>
+        <button className="clear" onClick={handleClick}>Clear all {createSRonlyText("tags")}</button>
+        <button className="choose" onClick={handleClick}>Choose all {createSRonlyText("tags")}</button>
       </div>
     ) ;
   }
@@ -149,6 +160,10 @@ function updatePortrait() {
   function createKey(seed){
     const key = seed && removeWhitespace(seed).toLowerCase();
     return key || Date.now().toString();
+  }
+
+  function createSRonlyText(str){
+    return (<span className="sr-only">{str}</span>);
   }
 
   function removeWhitespace(str){
