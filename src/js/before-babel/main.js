@@ -119,7 +119,7 @@ function updatePortrait() {
     const project = props.value;
 
     return (
-      <a href={project.url} target="_blank" className="card" style={{"background": `url(${project.imageUrl})`}} >
+      <a href={project.url} target="_blank" className="card container--flex container--relative content-centered" style={{"background": `url(${project.imageUrl})`}} >
         <h3 className="project-title">{project.title}</h3>
         <p className="project-description">{project.description ? project.description : ""}</p>
       </a>
@@ -139,7 +139,7 @@ function updatePortrait() {
     ));
 
     return (
-      <div className="container">
+      <div className="container--relative">
         <ul className="container--flex content-wrapped tags">{tags}</ul>
         <button className="clear" onClick={handleClick}>Clear all {createSRonlyText("tags")}</button>
         <button className="choose" onClick={handleClick}>Choose all {createSRonlyText("tags")}</button>

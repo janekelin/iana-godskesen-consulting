@@ -5,7 +5,7 @@
 
 header,
 footer { 
-  @media screen and (min-width: $tablet) {position: fixed; } 
+  @media screen and (min-width: $min-tablet) {position: fixed; } 
 } 
 
 footer {
@@ -17,4 +17,41 @@ footer {
     position: fixed;
     @include place-bottom($z-navigation);
   }
+}
+
+.container--relative {
+  position: relative;
+}
+
+.clear,
+.choose {
+  position: absolute;
+}
+
+.clear {
+  right: 0;
+  top: 0;
+}
+
+.choose {
+  bottom: 0;
+  left: 0;
+}
+
+.project-title {
+  bottom: 0;
+  left: -10px;
+  position: absolute; //within the card
+
+  @media screen and (min-width: $tablet) { left: -20px; } 
+  @media screen and (min-width: $desktop) { left: -30px; } 
+  @media screen and (min-width: $large-screen) { left: -60px; } 
+}
+
+.project-description {
+  @media screen and (min-width: $min-tablet) { visibility: hidden; } 
+}
+
+.card:hover .project-description {
+  visibility: visible;
 }
