@@ -105,7 +105,7 @@ function updatePortrait() {
       const tagList = projects.flatMap(project => project.tags); //only unique tags
   
       return (
-        <section id="projects">
+        <section id="projects" className="container--flex container--flex--vertical">
           <h2>My projects and collaborations</h2>
           <TagList allTags={tagList} activeTags={this.state.activeTags} handleClick={this.handleClick}/>
           {projectsList.length ? projectsList : PLACEHOLDER}
@@ -140,7 +140,7 @@ function updatePortrait() {
 
     return (
       <div className="container">
-        <ul className="tags">{tags}</ul>
+        <ul className="container--flex content-wrapped tags">{tags}</ul>
         <button className="clear" onClick={handleClick}>Clear all {createSRonlyText("tags")}</button>
         <button className="choose" onClick={handleClick}>Choose all {createSRonlyText("tags")}</button>
       </div>
