@@ -5,8 +5,7 @@
 
 header,
 footer { 
-  position: fixed;
-  @media screen and (max-width: $tablet) {position: static; } 
+  @media screen and (min-width: $tablet) {position: fixed; } 
 } 
 
 footer {
