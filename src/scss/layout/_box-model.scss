@@ -97,10 +97,11 @@ main {
   padding: 5%;
 }
 
-footer { 
+footer {
+  margin-top: 50px; 
   padding-bottom: 50px;
   width: 100%; 
 
   @media screen and (min-width: $small-tablet) { padding-bottom: 70px; }
-  @media screen and (min-width: $desktop) { padding-bottom: 0; }
+  @media screen and (min-width: $tablet) { padding-bottom: 0; }
 }
