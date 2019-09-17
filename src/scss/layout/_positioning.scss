@@ -3,31 +3,19 @@
             ***POSITIONING***
 */
 
-
-//index.html
-body,
-figure { position: relative; }
-
 header,
 footer { 
   position: fixed;
   @media screen and (max-width: $tablet) {position: static; } 
 } 
 
-#mainNav {
+footer {
+  @include place-bottom($z-footer);
+}
+
+.navigation {
   @media screen and (max-width: $tablet) { 
     position: fixed;
-    bottom: 0; 
-    z-index: 1;
+    @include place-bottom($z-navigation);
   }
 }
-
-footer {
-  bottom: 0;
-  z-index: 2;
-}
-
-//404.html
-.not-found--layout { display: table; }
-
-.not-found--content { display: table-cell; }
