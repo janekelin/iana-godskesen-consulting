@@ -139,7 +139,7 @@ function updatePortrait() {
     ));
 
     return (
-      <div className="container--relative">
+      <div className="container--relative container--tags">
         <ul className="container--flex content-wrapped tags">{tags}</ul>
         <button className="clear" onClick={handleClick}>Clear all {createSRonlyText("tags")}</button>
         <button className="choose" onClick={handleClick}>Choose all {createSRonlyText("tags")}</button>

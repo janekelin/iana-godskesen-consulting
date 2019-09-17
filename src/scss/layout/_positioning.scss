@@ -5,7 +5,7 @@
 
 header,
 footer { 
-  @media screen and (min-width: $min-tablet) {position: fixed; } 
+  @media screen and (min-width: $tablet) {position: fixed; } 
 } 
 
 footer {
@@ -13,7 +13,7 @@ footer {
 }
 
 .navigation {
-  @media screen and (max-width: $tablet) { 
+  @media screen and (max-width: $max-tablet) { 
     position: fixed;
     @include place-bottom($z-navigation);
   }
@@ -30,11 +30,11 @@ footer {
 
 .clear {
   right: 0;
-  top: 0;
+  top: -15px;
 }
 
 .choose {
-  bottom: 0;
+  bottom: -15px;
   left: 0;
 }
 
@@ -49,7 +49,7 @@ footer {
 }
 
 .project-description {
-  @media screen and (min-width: $min-tablet) { visibility: hidden; } 
+  @media screen and (min-width: $tablet) { visibility: hidden; } 
 }
 
 .card:hover .project-description {
