@@ -3,7 +3,6 @@
             ***VISUAL***
 */
 
-//index.html
 body,
 header,
 #mainNav { background-color: $color-bg-main; }
@@ -33,9 +32,3 @@ i[class^="fab"] { color: $color-icons; }
 }
 
 footer { background: $gradient-footer; }
-
-
-//404.html
-.not-found--content { background-image: $gradient-footer; }
-
-.not-found--heading { background-color: $color-not-found--heading-bg; }
