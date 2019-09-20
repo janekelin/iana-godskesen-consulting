@@ -14,9 +14,12 @@ $color-white: #fff;
 /* Functional colors */
 $color-bg-footer: $color-custom-red;
 $color-bg-main: $color-white;
+$color-bg-navigation: $color-white;
 $color-bg-strong: $color-custom-yellow;
-$color-bg-tags: $color-custom-red-transparent;
-$color-border-main: $color-custom-grey;
+$color-bg-tags: $color-white; 
+$color-border-button: $color-custom-red;
+$color-border-container: $color-custom-red-transparent;
+$color-border-navigation: $color-custom-grey;
 $color-icons: $color-custom-red;
 $color-line-through: $color-custom-red;
 $color-link: $color-custom-yellow;
@@ -25,7 +28,7 @@ $color-navigation: $color-custom-red;
 $color-not-found--heading-bg: $color-custom-yellow;
 $color-not-found--link: $color-custom-yellow;
 $color-shadow: $color-custom-grey;
-$color-tags: $color-white;
+$color-tags: $color-custom-red;
 $color-text: $color-black;
 
 /* Gradents */
@@ -54,4 +57,7 @@ $very-large-screen: 2560px;
             ***Z_INDECES***
 */
 $z-navigation: 10;
+$z-deco: 11;
+$z-project-title: 12;
+$z-project-description: 13;
 $z-footer: 20;

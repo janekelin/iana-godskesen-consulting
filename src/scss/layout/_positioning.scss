@@ -14,8 +14,8 @@ footer {
 
 .navigation {
   @media screen and (max-width: $max-tablet) { 
-    position: fixed;
     @include place-bottom($z-navigation);
+    position: fixed;
   }
 }
 
@@ -23,9 +23,27 @@ footer {
   position: relative;
 }
 
+.container--tags {
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+  }
+
+  &:after {
+    bottom: -5px;
+    right: 0;
+  }
+
+  &:before {
+    top: -5px;
+    left: 0;
+  }
+}
+
 .clear,
 .choose {
-  position: absolute;
+  position: absolute; //within the tag cloud
 }
 
 .clear {
@@ -39,9 +57,10 @@ footer {
 }
 
 .project-title {
-  bottom: 0;
+  bottom: -10px;
   left: -10px;
   position: absolute; //within the card
+  z-index: $z-project-title;
 
   @media screen and (min-width: $tablet) { left: -20px; } 
   @media screen and (min-width: $desktop) { left: -30px; } 
@@ -49,9 +68,16 @@ footer {
 }
 
 .project-description {
+  z-index: $z-project-description;
+
   @media screen and (min-width: $tablet) { visibility: hidden; } 
+
+  .card:hover & {
+    visibility: visible;
+  }
 }
 
-.card:hover .project-description {
-  visibility: visible;
+.deco {
+  @include make-overlay();
+  z-index: $z-deco;
 }
