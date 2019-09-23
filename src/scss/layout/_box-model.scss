@@ -59,7 +59,7 @@ main {
 
 }
 
-.section-title {
+.section__title {
   margin-top: 50px;
 }
 
@@ -96,19 +96,20 @@ main {
    height: 200px;
    width: 60%;
 
-   &:hover {
+   &:hover,
+   &:focus {
      height: auto;
      min-height: 200px;
    }
  }
 }
 
-.project-title,
-.project-description {
+.project__title,
+.project__description {
   margin: 0;
 }
 
-.project-description {
+.project__description {
   padding: 5%;
 }
 
