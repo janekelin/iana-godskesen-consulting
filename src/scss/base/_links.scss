@@ -3,7 +3,6 @@
             ***LINKS***
 */
 
-// general
 a { 
   text-decoration: none;
   color: $color-text;
@@ -29,18 +28,9 @@ p {
   }
 } 
 
-#contact a,
-#projects a {
-  opacity: 0.8;
+#contact a {
+  opacity: .8;
 
   &:hover,
   &:focus { opacity: 1; }
-}
-
-//404.html
-.not-found--link { 
-  color: $color-not-found--link;
-  
-  &:hover,
-  &:focus { color: $color-text; } 
 }

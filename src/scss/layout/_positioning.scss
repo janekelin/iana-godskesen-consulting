@@ -3,31 +3,87 @@
             ***POSITIONING***
 */
 
-
-//index.html
-body,
-figure { position: relative; }
-
 header,
 footer { 
-  position: fixed;
-  @media screen and (max-width: $tablet) {position: static; } 
+  @media screen and (min-width: $tablet) { position: fixed; } 
 } 
 
-#mainNav {
-  @media screen and (max-width: $tablet) { 
+footer {
+  @include place-bottom($z-footer);
+}
+
+.navigation {
+  @media screen and (max-width: $max-tablet) { 
+    @include place-bottom($z-navigation);
     position: fixed;
-    bottom: 0; 
-    z-index: 1;
   }
 }
 
-footer {
-  bottom: 0;
-  z-index: 2;
+.container--relative {
+  position: relative;
 }
 
-//404.html
-.not-found--layout { display: table; }
+.container--tags {
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+  }
 
-.not-found--content { display: table-cell; }
+  &:after {
+    bottom: -5px;
+    right: 0;
+  }
+
+  &:before {
+    top: -5px;
+    left: 0;
+  }
+}
+
+.clear,
+.choose {
+  position: absolute; //within the tag cloud
+}
+
+.clear {
+  right: 0;
+  top: -15px;
+}
+
+.choose {
+  bottom: -15px;
+  left: 0;
+}
+
+.project__title {
+  bottom: -10px;
+  left: -10px;
+  position: absolute; //within the card
+  z-index: $z-project-title;
+
+  @media screen and (min-width: $tablet) { left: -20px; } 
+  @media screen and (min-width: $desktop) { left: -30px; } 
+  @media screen and (min-width: $large-screen) { left: -60px; } 
+}
+
+.project__description {
+  z-index: $z-project-description;
+
+  @media (any-hover: hover) {
+    visibility: hidden;
+
+    .card:hover & {
+      visibility: visible;
+  }
+  }
+
+  .card:focus & {
+    visibility: visible;
+  }
+}
+
+.deco {
+  @include make-overlay();
+  z-index: $z-deco;
+}
