@@ -14,8 +14,6 @@ $color-white: #fff;
 /* Functional colors */
 $color-bg-button: $color-white;
 $color-bg-deco: $color-custom-yellow;
-$color-bg-footer: $color-custom-red;
-$color-bg-main: $color-white;
 $color-bg-navigation: $color-white;
 $color-bg-project-title: $color-white;
 $color-bg-strong: $color-custom-yellow;
@@ -28,8 +26,6 @@ $color-line-through: $color-custom-red;
 $color-link: $color-custom-yellow;
 $color-link-active: $color-custom-red;
 $color-navigation: $color-custom-red;
-$color-not-found--heading-bg: $color-custom-yellow;
-$color-not-found--link: $color-custom-yellow;
 $color-project-title: $color-custom-red;
 $color-shadow: $color-custom-grey;
 $color-tags: $color-custom-red;
@@ -48,7 +44,6 @@ $font-primary: 'Raleway', Verdana, Helvetica, sans-serif;
             ***MEDIA QUERIES***
 */
 
-$very-small-screen: 280px;
 $small-tablet: 568px;
 $max-tablet: 768px;
 $tablet: 769px;
