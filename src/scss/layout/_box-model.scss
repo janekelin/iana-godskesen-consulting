@@ -63,6 +63,14 @@ main {
   margin-top: 50px;
 }
 
+.container--tags {
+  &:after,
+  &:before {
+    height: 6px;
+    width: 55px;
+  }
+}
+
 .tags {
   margin: 0;
   padding: 25px;
@@ -76,12 +84,8 @@ main {
   }
 }
 
-.container--tags {
-  &:after,
-  &:before {
-    height: 6px;
-    width: 55px;
-  }
+.btn--control:before {
+  padding-right: 5px;
 }
 
 .card { 
