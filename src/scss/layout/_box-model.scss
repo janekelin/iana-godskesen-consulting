@@ -7,7 +7,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*, 
+*:before, 
+*:after {
   box-sizing: inherit;
 }
 
@@ -74,6 +76,14 @@ main {
   }
 }
 
+.container--tags {
+  &:after,
+  &:before {
+    height: 6px;
+    width: 55px;
+  }
+}
+
 .card { 
  padding: 3%;
  margin: 20px auto;
@@ -88,6 +98,7 @@ main {
 
    &:hover {
      height: auto;
+     min-height: 200px;
    }
  }
 }
