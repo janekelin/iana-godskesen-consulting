@@ -6,26 +6,31 @@
 @media print {
 
   //hide unnecessary elements
-  #mainNav,
+  .navigation,
   .portrait,
   .low-voice,
-  .card figure,
-  i[class^="fab"] { display: none; }
+  .container--tags,
+  i[class^="fab"] { 
+    display: none; 
+  }
 
   //linerize the layout
   header,
   main,
-  #contact,
+  .container--flex,
   footer { 
     display: block; 
-    width: auto;
     height: auto;
     margin: 1%;
     padding: 2%;
+    width: auto;
   }
 
   header,
-  footer { position: static; }
+  footer,
+  .project__title { 
+    position: static; 
+  }
 
   main {
     section {
@@ -45,18 +50,15 @@
     font-size: 12pt;
   }
 
-  h1 { text-align: center; }
+  h1 { 
+    text-align: center; 
+  }
 
   // add suplementary content
-  section[id*="about"]::after { 
-    content: "My projects";
-    font-size: 26pt;
-    font-weight: bold; 
+  a:not(.card) {
+    &[href*="linkedin"]::before { content: "My LinkedIn: "; }
+    &[href*="github"]::before { content: "My GitHub: "; }
+    &[href*="twitter"]::before { content: "My Twitter: "; }
+    &[href*="codepen"]::before { content: "My CodePen: "; }
   }
-  
-  a[href*="linkedin"]::before { content: "My LinkedIn: "; }
-  a[href*="github"]::before { content: "My GitHub: "; }
-  a[href*="twitter"]::before { content: "My Twitter: "; }
-  a[href*="codepen"]::before { content: "My CodePen: "; }
-
 }
