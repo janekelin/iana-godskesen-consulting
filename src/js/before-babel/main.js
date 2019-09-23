@@ -106,7 +106,7 @@ function updatePortrait() {
   
       return (
         <section id="projects" className="container--flex container--flex--vertical">
-          <h2 className="section-title">My projects and collaborations</h2>
+          <h2 className="section__title">My projects and collaborations</h2>
           <TagList allTags={tagList} activeTags={this.state.activeTags} handleClick={this.handleClick}/>
           {projectsList.length ? projectsList : PLACEHOLDER}
         </section>

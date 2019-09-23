@@ -3,32 +3,83 @@
             ***VISUAL***
 */
 
-body,
-header,
-#mainNav { background-color: $color-bg-main; }
-
-#mainNav { @media screen and (max-width: $tablet) { border-top: 2px solid $color-border-main; } }
+.navigation { 
+  @media screen and (max-width: $max-tablet) { 
+    background-color: $color-bg-navigation;
+    border-top: 2px solid $color-border-navigation; 
+  } 
+}
 
 .portrait { border-radius: 30%; }
 
-strong { background-color: $color-bg-strong; }
+strong { 
+  background-color: $color-bg-strong; 
+}
 
-i[class^="fab"] { color: $color-icons; }
+i[class^="fab"] { 
+  color: $color-icons; 
+}
 
 .card {
-  border: 3px solid $color-shadow;
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: 0px 5px 17px 4px $color-shadow;
+}
 
-  img {
-    border: 2px solid $color-icons;
-    border-radius: 10px;
-    object-fit: cover;
+.container--tags {
+  border-bottom: solid 1px $color-border-container;
+  border-top: solid 1px $color-border-container;
+
+  &:after,
+  &:before {
+    background-color: $color-bg-button;
   }
 }
 
-.tags li { 
+.container--tags button { 
   background-color: $color-bg-tags;
-  //color: $color-tags; 
+  border: solid 2px $color-border-button;
+  border-radius: 5px;
+  color: $color-tags; 
+  cursor: pointer;
+
+  &.btn--control {
+    border-color: $color-bg-tags; //to create the effect of blending with the .container--tags background
+  }
 }
 
-footer { background: $gradient-footer; }
+.clear:before {
+  content: "\2573"; //cross
+}
+
+.choose:before {
+  content: "\2713"; //checkmark
+}
+
+.passive {
+  opacity: .2;
+}
+
+.project__title {
+  background-color: $color-bg-project-title;
+  box-shadow: -1px -1px 3px 1px $color-shadow, 1px 1px 3px 1px $color-shadow;
+  color: $color-project-title;
+}
+
+.deco {
+  background-color: $color-bg-deco;
+  opacity: .2;
+
+  @media (any-hover: none){
+    opacity: .8;
+  }
+
+  .card:hover &,
+  .card:focus & {
+    opacity: .9;
+  }
+}
+
+footer { 
+  background: $gradient-footer; 
+}
