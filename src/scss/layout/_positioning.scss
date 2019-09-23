@@ -56,7 +56,7 @@ footer {
   left: 0;
 }
 
-.project-title {
+.project__title {
   bottom: -10px;
   left: -10px;
   position: absolute; //within the card
@@ -67,12 +67,13 @@ footer {
   @media screen and (min-width: $large-screen) { left: -60px; } 
 }
 
-.project-description {
+.project__description {
   z-index: $z-project-description;
 
   @media screen and (min-width: $tablet) { visibility: hidden; } 
 
-  .card:hover & {
+  .card:hover &,
+  .card:focus & {
     visibility: visible;
   }
 }

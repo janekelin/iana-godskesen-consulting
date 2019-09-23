@@ -119,9 +119,10 @@ function updatePortrait() {
     const project = props.value;
 
     return (
-      <a href={project.url} target="_blank" className="card container--flex container--relative content-centered" style={{"background": `url(${project.imageUrl})`}} >
-        <h3 className="project-title">{project.title}</h3>
-        <p className="project-description">{project.description ? project.description : ""}</p>
+      <a href={project.url} target="_blank" className="card container--flex container--relative content--centered" style={{"backgroundImage": `url(${project.imageUrl})`}} >
+        <h3 className="project__title">{project.title}</h3>
+        <p className="project__description">{project.description ? project.description : ""}</p>
+        <div className="deco"></div>
       </a>
     );
   }
@@ -140,9 +141,9 @@ function updatePortrait() {
 
     return (
       <div className="container--relative container--tags">
-        <ul className="container--flex content-wrapped tags">{tags}</ul>
-        <button className="clear" onClick={handleClick}>Clear all {createSRonlyText("tags")}</button>
-        <button className="choose" onClick={handleClick}>Choose all {createSRonlyText("tags")}</button>
+        <ul className="container--flex content--wrapped tags">{tags}</ul>
+        <button className="btn--control clear" onClick={handleClick}>Clear all {createSRonlyText("tags")}</button>
+        <button className="btn--control choose" onClick={handleClick}>Choose all {createSRonlyText("tags")}</button>
       </div>
     ) ;
   }
