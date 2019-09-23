@@ -70,9 +70,14 @@ footer {
 .project__description {
   z-index: $z-project-description;
 
-  @media screen and (min-width: $tablet) { visibility: hidden; } 
+  @media (any-hover: hover) {
+    visibility: hidden;
 
-  .card:hover &,
+    .card:hover & {
+      visibility: visible;
+  }
+  }
+
   .card:focus & {
     visibility: visible;
   }
