@@ -1,36 +1,45 @@
-
 /*
             ***LINKS***
 */
 
-a { 
+a {
   text-decoration: none;
   color: $color-text;
 }
 
 nav a {
   &:hover,
-  &:focus { border-bottom: 5px solid $color-navigation; }
+  &:focus {
+    border-bottom: 5px solid $color-navigation;
+  }
 
-  &:active { border-bottom-style: dotted; }
+  &:active {
+    border-bottom-style: dotted;
+  }
 }
 
-p {
-  a {
-    border-bottom: 3px solid $color-link;
+p a {
+  border-bottom: 3px solid $color-link;
 
-    &:visited { opacity: 0.8; }
-
-    &:hover,
-    &:focus { background-color: $color-link; }
-
-    &:active { background-color: $color-link-active; }
+  &:visited {
+    opacity: 0.8;
   }
-} 
-
-#contact a {
-  opacity: .8;
 
   &:hover,
-  &:focus { opacity: 1; }
+  &:focus {
+    background-color: $color-link;
+  }
+
+  &:active {
+    background-color: $color-link-active;
+  }
+}
+
+#contact a {
+  opacity: 0.8;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 }
