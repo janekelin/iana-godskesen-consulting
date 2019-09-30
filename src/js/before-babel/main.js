@@ -107,7 +107,7 @@ function updatePortrait() {
       return (
         <section id="projects" className="container--flex container--flex--vertical">
           <h2 className="section__title">My projects and collaborations</h2>
-          <TagList allTags={tagList} activeTags={this.state.activeTags} handleClick={this.handleClick}/>
+          <TagList allTags={tagList} activeTags={this.state.activeTags} handleClick={this.handleClick} showClear={this.state.showClear} showChoose={this.state.showChoose} />
           {projectsList.length ? projectsList : PLACEHOLDER}
         </section>
       );
@@ -142,8 +142,8 @@ function updatePortrait() {
     return (
       <div className="container--relative container--tags">
         <ul className="container--flex content--wrapped tags">{tags}</ul>
-        <button className="btn--control clear" onClick={handleClick}>Clear all {createSRonlyText("tags")}</button>
-        <button className="btn--control choose" onClick={handleClick}>Choose all {createSRonlyText("tags")}</button>
+        <button className="btn--control clear" onClick={handleClick} hidden={!props.showClear}>Clear all {createSRonlyText("tags")}</button>
+        <button className="btn--control choose" onClick={handleClick} hidden={!props.showChoose}>Choose all {createSRonlyText("tags")}</button>
       </div>
     ) ;
   }
