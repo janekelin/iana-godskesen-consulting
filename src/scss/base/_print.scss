@@ -21,9 +21,13 @@
   footer { 
     display: block; 
     height: auto;
-    margin: 1%;
-    padding: 2%;
+    margin: 10px;
+    padding: 20px;
     width: auto;
+  }
+
+  .section__title {
+    margin-top: 10px;
   }
 
   header,
@@ -52,6 +56,10 @@
 
   h1 { 
     text-align: center; 
+  }
+
+  .project__title {
+    font-size: 18pt;
   }
 
   // add suplementary content
