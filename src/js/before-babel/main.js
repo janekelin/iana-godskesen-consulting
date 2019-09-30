@@ -74,13 +74,13 @@ function updatePortrait() {
 
     handleClick(e){
       e.preventDefault();
-
-      if(e.target.className === "clear"){
+      
+      if(hasClass(e.target, 'clear')){
         this.setState({activeTags: new Set(), showClear: false, showChoose: true});
         return;
       }
 
-      if(e.target.className === "choose"){
+      if(hasClass(e.target, 'choose')){
         this.setState(this.defaultState);
         return;
       }
@@ -165,6 +165,11 @@ function updatePortrait() {
 
   function createSRonlyText(str){
     return (<span className="sr-only">{str}</span>);
+  }
+
+  function hasClass(element, className){
+    const classArray = Array.from(element.classList);
+    return classArray.includes(className);
   }
 
   function removeWhitespace(str){
