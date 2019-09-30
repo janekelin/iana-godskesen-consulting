@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function updatePortrait() {
-  const header = document.getElementById("header");
-  const portrait = document.getElementById("portrait");
+  const header = document.getElementById("js-header");
+  const portrait = document.getElementById("js-portrait");
 
   header.addEventListener("click", function(event) {
     const NEW_SRC_ATTRIBUTE = "data-img";
