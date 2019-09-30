@@ -73,7 +73,7 @@ footer {
   @media (any-hover: hover) {
     visibility: hidden;
 
-    .card:hover & {
+    .card:hover &, .card:focus & {
       visibility: visible;
   }
   }

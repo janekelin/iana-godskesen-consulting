@@ -22,7 +22,12 @@ footer {
 }
 
 .clear,
-.choose {
+.choose {@media screen and (prefers-reduced-motion: reduce) {
+&:hover,
+  &:focus {
+    animation: none;
+}
+}
   &:hover,
   &:focus {
     animation: wobble-hor-bottom 1s ease-in alternate forwards;
