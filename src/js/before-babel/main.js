@@ -47,10 +47,10 @@ function updatePortrait() {
     },
     {
       id: "101",
-      title: "sparinspiration.com",
-      url: "http://sparinspiration.com",
+      title: "Sparinspiration",
+      url: "https://sparinspiration.godskesen.consulting",
       imageUrl: "build/images/screenshot2.png",
-      imageAlt: "Screenshot of sparinspiration.com",
+      imageAlt: "Screenshot of sparinspiration.godskesen.consulting",
       tags: ["Bootstrap 4", "Flexbox", "CSS Grid"],
       description: "A Swedish website with 5 daily money-saving tips."
     }
