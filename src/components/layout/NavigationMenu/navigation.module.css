@@ -1,0 +1,27 @@
+.navigation {
+  display: flex; 
+  justify-content: space-evenly; 
+}
+
+.link {
+  display: inline-flex;
+}
+
+.link:hover,
+.link:focus {
+    border-bottom: 5px solid var(--color-navigation);
+  }
+
+.link:active {
+    border-bottom-style: dotted;
+  }
+
+@media print {
+  .navigation {
+    display: block; 
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    width: auto;
+  }
+}

@@ -1,0 +1,194 @@
+.button {
+  -webkit-appearance: none;
+  background-color: var(--color-bg-tags);
+  border-color: var(--color-tags);
+  border-radius: 5px;
+  border: solid 2px var(--color-border-button);
+  color: var(--color-tags); 
+  cursor: pointer;
+  font-weight: 400;
+  padding: 7px 10px;
+  outline: none;
+}
+
+.card {
+  display: flex; 
+  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 5px 17px 4px var(--color-shadow);
+  padding: 3%;
+ margin: 20px auto;
+}
+
+.card:first {
+  margin-top: 40px;
+}
+
+.card:focus {
+  height: auto;
+  min-height: 200px;
+}
+
+.control {
+  position: absolute; /*within the tag cloud*/
+  padding-right: 5px;
+  background-color: var(--color-bg-tags);
+  border: solid 2px var(--color-border-button);
+  border-radius: 5px;
+  color: var(--color-tags); 
+  cursor: pointer;
+  border-color: var(--color-bg-tags); /*to create the effect of blending with the section background*/
+  font-size: .7rem;
+}
+
+
+.clear {
+  right: 0;
+  top: -15px;
+  content: "\2573"; /*cross*/
+}
+
+.choose {
+  bottom: -15px;
+  left: 0;
+  content: "\2713"; /*checkmark*/
+}
+
+.deco {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: var(--z-deco);
+  background-color: var(--color-bg-deco);
+  opacity: .2;
+}
+
+.description {
+  z-index: var(--z-project-description);
+  margin: 0;
+  padding: 25px;
+}
+
+.card:focus .description {
+  visibility: visible;
+}
+
+.passive {
+  opacity: .2;
+}
+
+.taglist {
+  display: flex; 
+  justify-content: space-evenly; 
+  align-content: center; 
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 25px;
+  font-size: .75rem; 
+  list-style-type: none;
+}
+
+.tag {
+  margin: 5px 0;
+}
+
+.title {
+  bottom: -10px;
+  left: -10px;
+  position: absolute; /*within the card*/
+  z-index: var(--z-project-title);
+  margin: 0;
+  padding: 2px 5px;
+  background-color: var(--color-bg-project-title);
+  box-shadow: -1px -1px 3px 1px var(--color-shadow), 1px 1px 3px 1px var(--color-shadow);
+  color: var(--color-project-title);
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    left: -20px;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    left: -30px;
+  }
+}
+
+@media screen and (min-width: 1440px) { 
+  .control { font-size: 1rem; }
+  
+  .taglist {font-size: 1.25rem; }
+
+  .title {
+    left: -60px;
+    font-size: 1.5rem;
+  }
+
+  
+}
+
+@media (any-hover: hover) { 
+  .card{
+    height: 200px;
+    width: 60%;
+  }  
+
+  .card:hover, 
+  .card:focus {
+    height: auto;
+    min-height: 200px;
+  }
+
+  .deco {
+    opacity: .8;
+  }
+
+  .card:hover .deco,
+  .card:focus .deco {
+    opacity: .9;
+  }
+
+  .description {
+    visibility: hidden;
+  }
+
+  .card:hover .description, 
+  .card:focus .description {
+    visibility: visible;
+}
+}
+
+@media print {
+  .card {
+    width: auto;
+    height: auto;
+    display: block; 
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    width: auto;
+  }
+
+  .taglist {
+    display: block; 
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    width: auto;
+  }
+
+  .title {
+    position: static;
+    font-size: 18pt;
+  }
+}

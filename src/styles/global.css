@@ -1,0 +1,78 @@
+/* 
+            ***COLOR PALETTE***
+*/
+
+/* Base colors */
+:root {
+  --color-black: #000;
+  --color-grey: #f5f5f5;
+  --color-red: #e96547;
+  --color-red--transparent: rgba(233,101,71,0.5);
+  --color-yellow: #efbe41;
+  --color-white: #fff;
+}
+
+
+/* Functional colors */
+:root {
+  --color-bg-button: var(--color-white);
+  --color-bg-deco: var(--color-yellow);
+  --color-bg-navigation: var(--color-white);
+  --color-bg-project-title: var(--color-white);
+  --color-bg-strong: var(--color-yellow);
+  --color-bg-tags: var(--color-white); 
+  --color-border-button: var(--color-red);
+  --color-border-container: var(--color-red--transparent);
+  --color-border-navigation: var(--color-grey);
+  --color-line-through: var(--color-red);
+  --color-link: var(--color-yellow);
+  --color-link-active: var(--color-red);
+  --color-navigation: var(--color-red);
+  --color-project-title: var(--color-red);
+  --color-shadow: var(--color-grey);
+  --color-tags: var(--color-red);
+  --color-text: var(--color-black);
+}
+
+/* Gradents */
+:root {
+  --gradient-footer: linear-gradient(
+                      100deg, 
+                      var(--color-red) 40%, 
+                      var(--color-yellow) 89%);
+}
+
+/*
+            ***Z_INDECES***
+*/
+:root {
+  --z-deco: 11;
+  --z-project-title: 12;
+  --z-project-description: 13;
+  --z-footer: 20;
+  --z-navigation: 21;
+}
+
+*, 
+*:before, 
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+@media print {
+  body {
+    font-family: serif;
+    font-size: 12pt;
+  }
+
+  a[href*="linkedin"]::before { content: "My LinkedIn: "; }
+  a[href*="github"]::before { content: "My GitHub: "; }
+  a[href*="twitter"]::before { content: "My Twitter: "; }
+  a[href*="codepen"]::before { content: "My CodePen: "; }
+
+}

@@ -1,54 +1,47 @@
 {
-  "name": "iana-godskesen-consulting",
+  "name": "elise-godskesen-website",
+  "private": true,
+  "description": "Personal website of Elise Godskesen",
   "version": "1.0.0",
-  "description": "Personal site of Iana Godskesen Kalinichenko",
-  "main": "gulpfile.js",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run babel & NODE_ENV=development gulp",
-    "prod": "npm run babel & NODE_ENV=production gulp",
-    "babel": "npx babel --watch src/js/before-babel --out-dir src/js/after-babel --presets react-app/prod"
-  },
-  "keywords": [
-    "portfolio"
-  ],
-  "author": "Iana Godskesen Kalinichenko",
-  "license": "ISC",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ]
-  },
-  "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "gulp": "^4.0.2",
-    "stylelint": "^9.10.1",
-    "stylelint-a11y": "^1.2.0"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "publish": "npm run format && npm run build && cd public && surge --domain elise-godskesen.surge.sh"
   },
   "dependencies": {
-    "autoprefixer": "^9.6.1",
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2",
-    "cssnano": "^4.1.10",
-    "gulp-concat": "^2.6.1",
-    "gulp-deporder": "^1.1.0",
-    "gulp-imagemin": "^5.0.3",
-    "gulp-newer": "^1.4.0",
-    "gulp-noop": "^1.0.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-size": "^3.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-strip-debug": "^3.0.0",
-    "gulp-terser": "^1.2.0",
-    "postcss-assets": "^5.0.0",
-    "usedcss": "^1.0.7"
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "gatsby": "^2.29.2",
+    "gatsby-plugin-typography": "^2.4.1",
+    "gatsby-source-filesystem": "^2.2.2",
+    "gatsby-transformer-remark": "^2.7.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react": "^7.19.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janekelin/elise-godskesen-website"
+  },
+  "bugs": {
+    "url": "https://github.com/janekelin/elise-godskesen-website/issues"
   }
 }

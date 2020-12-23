@@ -1,0 +1,39 @@
+.subtle {
+  text-decoration: line-through var(--color-line-through) double;
+}
+
+.accent { 
+  background-color: var(--color-bg-strong);
+}
+
+.contact {
+  opacity: 0.8;
+}
+
+.contact:hover,
+.contact:focus {
+    opacity: 1;
+  }
+
+  .link {
+    border-bottom: 3px solid var(--color-link);
+  }
+
+  .link:visited {
+    opacity: 0.8;
+  }
+
+  .link:hover,
+  .link:focus {
+    background-color: var(--color-link);
+  }
+
+  .link:active {
+    background-color: var(--color-link-active);
+  }
+
+@media print {
+  .subtle {
+    display: none; 
+  }
+}
